@@ -46,5 +46,11 @@ describe Customer, type: :model do
         expect(customer.vip).to be_truthy
     end
 
+    it 'female vip client' do
+        customer = create(:customer_vip_female)
+        expect(customer.gender).to eq('F')
+        expect(customer.vip).to be_truthy
+    end
+
     it { expect{ create(:customer) }.to change{Customer.all.size}.by(1) }
 end

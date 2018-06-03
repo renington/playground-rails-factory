@@ -26,6 +26,7 @@ FactoryBot.define do
         end
 
         factory :customer_vip, traits: [:vip]
+        factory :customer_vip_female, traits: [:vip, :female]
 
         after(:create) do |customer, evaluator|
             customer.name.upcase! if evaluator.upcased
