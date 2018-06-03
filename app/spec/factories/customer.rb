@@ -16,14 +16,16 @@ FactoryBot.define do
         trait :female do
             gender 'F'
         end
-
+        
         vip false
         days_to_pay 10
 
-        factory :customer_vip do
+        trait :vip do
             vip true
             days_to_pay 30
         end
+
+        factory :customer_vip, traits: [:vip]
 
         after(:create) do |customer, evaluator|
             customer.name.upcase! if evaluator.upcased
