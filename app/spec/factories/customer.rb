@@ -5,10 +5,16 @@ FactoryBot.define do
             upcased false
         end
 
-        name Faker::Name.name
-        email Faker::Internet.email
-        # gender ['M','F'].sample
+        # Dinamic Attributes
+        # Segundo a documentação deve ser usadas as chaves 
+        name { Faker::Name.name }
+        
+        # email { Faker::Internet.email }
+        # sequence(:email) do |n|
+        # end
+        sequence(:email) { |n| "my-email-#{n}@email.com" }
 
+        # gender ['M','F'].sample
         trait :male do
             gender 'M'
         end
