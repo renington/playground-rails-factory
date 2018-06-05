@@ -3,6 +3,7 @@ FactoryBot.define do
 
         transient do
             upcased false
+            quantity_orders 3
         end
 
         # Dinamic Attributes
@@ -29,6 +30,12 @@ FactoryBot.define do
         trait :vip do
             vip true
             days_to_pay 30
+        end
+
+        trait :with_orders do
+            after(:create) do |customer, evaluator|
+                create_list(:order, evaluator.quantity_orders, customer: customer)
+            end
         end
 
         factory :customer_vip, traits: [:vip]

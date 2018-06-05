@@ -10,4 +10,9 @@ RSpec.describe Order, type: :model do
     orders = create_list(:order, 3)
     expect(orders.count).to eq(3)
   end
+
+  it 'has many' do
+    customer = create(:customer, :with_orders)
+    expect(customer.orders.count).to eq(3)
+  end
 end
