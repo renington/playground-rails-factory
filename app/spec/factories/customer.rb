@@ -9,6 +9,8 @@ FactoryBot.define do
         # Dinamic Attributes
         # Segundo a documentação deve ser usadas as chaves 
         name { Faker::Name.name }
+
+        address { Faker::Address.street_address }
         
         # email { Faker::Internet.email }
         # sequence(:email) do |n|
